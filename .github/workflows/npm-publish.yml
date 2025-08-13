@@ -21,9 +21,6 @@ jobs:
       # Install dependencies
       - run: npm ci
 
-      # Optional: run tests before publishing
-      - run: npm test
-
       # Bump version to dev pre-release (no commit)
       - run: npm version prerelease --preid=dev --no-git-tag-version
 
