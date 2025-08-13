@@ -3,33 +3,29 @@ name: Node.js Package (Dev)
 on:
   push:
     branches:
-      - dev  # Trigger workflow on pushes to dev branch
+      - dev
 
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the repo
       - uses: actions/checkout@v4
 
-      # Setup Node with npm registry
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
 
-      # Install dependencies
       - run: npm ci
 
-      # Bump version to dev pre-release (no commit)
-      - run: npm version prerelease --preid=dev --no-git-tag-version
+      - run: |
+          VERSION=$(node -p "require('./package.json').version + '-dev.' + Date.now()")
+          npm version $VERSION --no-git-tag-version
 
-      # Show current npm user for debugging
       - run: npm whoami
         env:
           NPM_TOKEN: ${{ secrets.npm_token }}
 
-      # Publish to npm using dev tag
       - run: npm publish --tag dev --access public
         env:
           NPM_TOKEN: ${{ secrets.npm_token }}
