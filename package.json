@@ -1,0 +1,42 @@
+{
+  "name": "@jason.dev/hooks",
+  "version": "1.0.0",
+  "description": "Most what the hooks!, That i recreated again and again on many projects.",
+  "scripts": {
+    "build": "tsup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdsarun/hooks.git"
+  },
+  "author": "Jasonq Dev",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/sdsarun/hooks/issues"
+  },
+  "homepage": "https://github.com/sdsarun/hooks#readme",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0 <20.0.0",
+    "react-dom": ">=18.0.0 <20.0.0"
+  }
+}
