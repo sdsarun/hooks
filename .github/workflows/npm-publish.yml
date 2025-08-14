@@ -17,6 +17,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - run: npm ci
+      - run: npm run build
 
       - run: |
           VERSION=$(node -p "require('./package.json').version + '-dev.' + Date.now()")
